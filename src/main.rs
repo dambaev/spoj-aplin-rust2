@@ -15,7 +15,7 @@ fn main()
     let mut outp = io::stdout();
 //    let fp = unsafe { fdopen(0, "r") };
 
-    let mut buf_len = 0;
+    let mut buf_len;
 
     while let Ok(n) = inp.read_line(&mut ret_buf)
     {
@@ -46,6 +46,7 @@ fn reverseInPlace(read_buf: &mut String, half: usize, center_len: usize)
     println!("reverse");
     let newlen = (half + center_len + half) ;
     let cap = read_buf.capacity();
+    let mut chr: char ;
 
     if (cap < newlen) { return; }
 
@@ -53,7 +54,8 @@ fn reverseInPlace(read_buf: &mut String, half: usize, center_len: usize)
 //    let mut p_buf = unsafe { read_buf.as_mut_vec()};
     while (n > 0)
     {
-        read_buf.push( read_buf.char_at(n-1));
+        chr = read_buf.char_at(n-1);
+        read_buf.push( chr);
         n-=1;
     }
 }
